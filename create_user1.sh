@@ -1,37 +1,24 @@
 #!/bin/bash
 
-# Prompt for the new username
-read -p "Enter the new username: " username
+<<info
 
-# Check if the user already exists
-#if id "$username" &>/dev/null; then
-#    echo "User '$username' already exists!"
-#    exit 1
-#fi
+function called craete user
+info
 
-# Create the new user with a home directory and bash shell
-useradd -m -s /bin/bash "$username"
+function create_user {
 
-# Set the password for the new user
-read -sp "Enter the password for $username: " password
-echo
+read -p "enter a user name" username
 
-# Use the echo command to set the user's password
-echo "$username:$password" |  chpasswd
+useradd -m $username
 
-# Optionally, add the user to a specific group (e.g., sudo group)
-# sudo usermod -aG sudo "$username"
+echo "user created successfully"
+}
 
-# Print success message
-echo "User '$username' has been created successfully!"
+for (( i=1 ; i<=5 ; i++))
+do
+	create_user
 
-echo "==========================user has been created============================="
-
-userdel "$username"
-
-cat /etc/passwd | grep $username | wc
-
-echo "===============================if wc is 0 that means user is deleted========================"
+done
 
 
 
