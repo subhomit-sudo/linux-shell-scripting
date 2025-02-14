@@ -2,7 +2,7 @@
 
 <<info
 this is backup scripts which backed up scripts.
-
+./backup.sh /<<src>> /<<dest>>
 info
 
 src=$1
