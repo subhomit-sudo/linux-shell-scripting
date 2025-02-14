@@ -8,8 +8,8 @@ info
 src=$1
 dest=$2
 
-timestamp=$(date '+%Y-%m-%d')
+timestamp=$(date '+%Y-%m-%d-%H-%M-%S')
 
-zip "$dest/backup-$timestamp.zip" $src
+zip -r "$dest/backup-$timestamp.zip" $src
 
 echo "backup has been stored successfully"
